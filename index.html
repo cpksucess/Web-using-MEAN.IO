@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="mittens">
 <head>
 	<title>pengkun's world</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	 
+	<script type="text/javascript" src =" angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('mittens',[]);
+		app.controller('MittensCtrl', function($scope){
+			
+			$scope.meows =[
+				'Hello, Welcome',
+				'I am feeling good',
+				'How are you today',
+				'go outside and have fun'
+			];
+		});
+		 
+	</script>
 </head>
-<body>
+<body ng-controller = "MittensCtrl">
 	<h1 class="page">Welcome!</h1>
 	<div class = "row feed">
 		<div class = "col-md-4">
@@ -17,24 +30,14 @@
 			<input type = "password" size = "30" placeholder="password">
 		</div>
 		<div class = "col-md-8">
-			<h3>
-				 <span class="glyphicon  glyphicon-user" aria-hidden="true"></span>
-				Hello, Welcome;
+			<h3 ng-repeat= "meows in meows">
+				 <span class="glyphicon  glyphicon-user" aria-hidden="true">
+				 	{{ meows }}
+				 </span>
+				
 			</h3>
 			 
-			<h3>
-				 <span class="glyphicon  glyphicon-user" aria-hidden="true"></span>
-				I am feeling good
-			</h3>
-			<h3>
-				 <span class="glyphicon  glyphicon-user" aria-hidden="true"></span>
-				How are you today
-			</h3>
-			<h3>
-				 <span class="glyphicon  glyphicon-user" aria-hidden="true"></span>
-				go outside and have fun
-			</h3>
-
+			 
 			 
 		</div>
 
