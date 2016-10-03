@@ -7,14 +7,12 @@
 	<script type="text/javascript" src =" angular.min.js"></script>
 	<script type="text/javascript">
 		var app = angular.module('mittens',[]);
-		app.controller('MittensCtrl', function($scope){
+		app.controller('MittensCtrl', function($scope, $http){
 			
-			$scope.meows =[
-				'Hello, Welcome',
-				'I am feeling good',
-				'How are you today',
-				'go outside and have fun'
-			];
+			 
+			$http.get('/meows').then(function(response){
+				$scope.meows = response.data;
+			});
 		});
 		 
 	</script>
