@@ -19,7 +19,7 @@ app.get('/meows',function(req, res, next){
 
 app.post('/meows',function(req, res, next){
 	meows.push(req.body.newMeow);
-	console.log(meows.length);
+	 
 	res.send();
 });
 
