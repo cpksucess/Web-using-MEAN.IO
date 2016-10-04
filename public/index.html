@@ -9,9 +9,14 @@
 		var app = angular.module('mittens',[]);
 		app.controller('MittensCtrl', function($scope, $http){
 			
-			 
+			$scope.submitNewMeow = function(){
+				$http.post('/meows', {newMeow: $scope.newMeow}).then(function(){
+					alert('Submitted');
+				});
+			};
+
 			$http.get('/meows').then(function(response){
-				$scope.meows = response.data;
+				$scope.meows =  response.data;
 			});
 		});
 		 
@@ -28,11 +33,13 @@
 			<input type = "password" size = "30" placeholder="password">
 		</div>
 		<div class = "col-md-8">
-			<h3 ng-repeat= "meows in meows">
-				 <span class="glyphicon  glyphicon-user" aria-hidden="true">
-				 	{{ meows }}
-				 </span>
-				
+			<div class = "new-meow">
+				<input type="text" class="form-control" ng-model="newMeow" placeholder="what do you have to meow today?" >
+				<button class ="btn" ng-click="submitNewMeow()"type="button">Submit</button>
+			</div>
+			<h3 ng-repeat= "meow in meows">
+				 <span class="glyphicon  glyphicon-user" aria-hidden="true"></span>
+				 {{ meows }}
 			</h3>
 			 
 			 
