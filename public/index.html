@@ -10,7 +10,7 @@
 		app.controller('MittensCtrl', function($scope, $http){
 			
 			$scope.submitNewMeow = function(){
-				$http.post('/meows', {newMeow: Meow}).then(function(){
+				$http.post('/meows', {newMeow: $scope.newMeow}).then(function(){
 						getMeows();
 				});
 			};
@@ -29,6 +29,7 @@
 				});
 
 			};
+
 			getMeows();
 
 
